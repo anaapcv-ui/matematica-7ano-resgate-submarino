@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico · Resgate Submarino · Matemática 7º</title>
+<style>
+:root{--bg:#041a22;--bg2:#072a35;--bg3:#0b3a48;--borda:#12505f;--borda2:#1d6b7d;--amarelo:#ffb547;--verde:#5ef2a0;--laranja:#ff6f61;--ceu:#2ee6d6;--texto:#e4f7f9;--cinza:#93bcc6;--vermelho:#ff5d6c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Verdana,'Segoe UI',Tahoma,sans-serif;background:radial-gradient(1100px 520px at 50% -12%,#0d4a5c,#041a22 62%),var(--bg);color:var(--texto);line-height:1.7;font-size:17px;padding-bottom:60px}
+h1,h2,h3,h4{font-family:'Palatino Linotype','Book Antiqua',Georgia,serif;letter-spacing:.2px}
+.prof{font-family:'Courier New',monospace;letter-spacing:1px}
+header{padding:28px 18px 22px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,.5);background:linear-gradient(180deg,#0e5c6e 0%,#073644 55%,#041a22 100%);border-bottom:3px solid var(--ceu)}
+header .selo{font-size:.76rem;letter-spacing:2px;color:#b6fff8;text-transform:uppercase;font-family:'Courier New',monospace}
+header h1{font-size:1.8rem;margin:8px 0 4px}
+header h1 .s{color:var(--ceu)} header h1 .a{color:var(--amarelo)}
+header p{color:#cdeff3;font-size:.92rem}
+.ondas{height:18px;background:radial-gradient(circle at 10px -4px,transparent 11px,#0a3b49 12px) 0 0/20px 18px repeat-x;opacity:.9}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+.barra-nav{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.barra-nav a{flex:1 1 auto;text-align:center;text-decoration:none;color:var(--texto);background:var(--bg2);border:1px solid var(--borda);border-radius:22px;padding:8px 10px;font-size:.86rem}
+.barra-nav a.on{border-color:var(--ceu);color:var(--ceu);font-weight:bold}
+.barra-nav a.lock{opacity:.5;pointer-events:none;filter:grayscale(.7)}
+.intro{background:var(--bg2);border:1px solid var(--borda);border-radius:16px;padding:16px 18px;margin:14px 0}
+.intro h2{font-size:1.2rem;margin-bottom:8px;color:var(--ceu)}
+.intro ol,.intro ul{margin:8px 0 0 22px}
+.painel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:#06303c;border:1px dashed var(--borda2);border-radius:12px;padding:10px 12px;margin:12px 0;font-size:.86rem;color:var(--cinza)}
+.painel .btns{display:flex;gap:6px;flex-wrap:wrap}
+button{font-family:inherit}
+.mini{background:var(--bg3);border:1px solid var(--borda2);color:var(--texto);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:.84rem}
+.mini:hover{border-color:var(--ceu)}
+.postit{background:#ffe58f;color:#3a2a00;border-radius:4px;padding:12px 14px;box-shadow:3px 4px 10px rgba(0,0,0,.4);transform:rotate(-.7deg);margin:14px 0;font-size:.95rem}
+.postit b{color:#7a4a00}
+.alerta{background:#3a1614;border-left:5px solid var(--laranja);border-radius:0 12px 12px 0;padding:12px 14px;margin:14px 0;font-size:.95rem}
+.alerta b{color:#ffb3a8}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(2,12,16,.88);z-index:60;align-items:center;justify-content:center;padding:16px}
+.modal-bg.show{display:flex}
+.modal{background:var(--bg2);border:2px solid var(--ceu);border-radius:16px;padding:22px;max-width:440px;text-align:center}
+.modal .big{font-size:2.6rem}
+.modal p{margin-bottom:12px}
+.modal a,.modal button.ok{display:inline-block;background:var(--ceu);color:#032a2a;border:none;border-radius:10px;padding:10px 18px;font-weight:bold;text-decoration:none;cursor:pointer}
+.modal button.sec{background:transparent;border:1px solid var(--borda2);color:var(--texto);border-radius:10px;padding:10px 16px;margin-left:8px;cursor:pointer}
+.rodape{text-align:center;color:var(--cinza);font-size:.82rem;margin-top:26px}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid var(--borda);padding:7px 9px;text-align:left;font-size:.88rem;vertical-align:top}
+th{background:#08394a;color:var(--ceu)}
+.trilha-fim{background:var(--bg2);border:2px solid var(--borda2);border-radius:14px;padding:16px;margin:20px 0;text-align:center}
+
+.sec{background:var(--bg2);border:1px solid var(--borda);border-radius:16px;padding:14px 16px;margin:16px 0}
+.sec h2{color:var(--ceu);font-size:1.2rem;margin-bottom:4px}
+.sec .sub{font-size:.85rem;color:var(--cinza);margin-bottom:8px}
+.st{font-weight:bold;white-space:nowrap}
+.pf{background:var(--bg2);border-radius:14px;padding:12px 14px;margin:10px 0;border-left:7px solid var(--vermelho)}
+.pf.rf{border-left-color:#ff9f43}
+.pf h3{font-size:1.05rem}
+.pf p{font-size:.92rem}
+.tabela-wrap{overflow-x:auto}
+</style>
+</head>
+<body>
+<header><div class="selo">Resgate Submarino · Matemática 7º ano · Colégio Coração Feliz · Recuperação do 3º trimestre</div><h1>🧭 Diagnóstico — <span class="s">Mapa do</span> <span class="a">Naufrágio</span></h1><p>Onde os pontos afundaram: as 3 provas do trimestre, questão por questão (anexo para os pais — sempre aberto)</p></header><div class="ondas"></div><div class="wrap"><nav class="barra-nav" id="nav"><a href="index.html">🚢 Navio (início)</a><a class="on" href="diagnostico.html">🧭 Mapa do Naufrágio</a><a href="resumo.html">🗺️ Resumo de Revisão</a><a href="simulado.html" data-etapa="simulado" data-txt="📝 Simulado">📝 Simulado</a><a href="folha_de_problemas.html">✏️ Folha de Problemas</a></nav><div class="intro"><h2>📋 Como ler este mapa</h2><p>Cada linha é uma questão das provas corrigidas. <b>✅ Acertou</b> · <b>❌ Errou</b> · <b>⛔ Zerada</b> = marcou a letra certa, mas a conta não chegava nela (a professora só aceita a alternativa com o cálculo conferindo). O kit reforça sobretudo as linhas ❌ e ⛔.</p></div><div class="sec"><h2>Mensal 1 — 10/09/2026</h2><div class="sub">Cap. 9 Volume · Cap. 10 Expressões algébricas · Cap. 12 Equações</div><div class="tabela-wrap"><table><tr><th>Questão</th><th>Formato</th><th>Tema</th><th>Resultado</th><th>O que aconteceu</th></tr><tr><td><b>Q1</b></td><td>Múltipla escolha + cálculo</td><td>Volume do paralelepípedo (6 × 8 × 4 = 192 m³)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q2</b></td><td>Múltipla escolha + cálculo</td><td>Problema: parte fixa R$ 10 + 2,25 por km, 27 km (R$ 70,75)</td><td class="st" style="color:#ffb547">⛔ Zerada (letra certa, conta errada)</td><td>Letra certa, mas somou 10 + 27 antes de multiplicar (83,25): cálculo não confere → zerada</td></tr><tr><td><b>Q3</b></td><td>Múltipla escolha</td><td>Redução de termos semelhantes (a − 7b + 4c)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q4</b></td><td>Múltipla escolha + cálculo</td><td>Perímetros com termos algébricos (226z e 245ab)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q5</b></td><td>Múltipla escolha + cálculo</td><td>Equação com solução 9 (3x − 8 = 19)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q6</b></td><td>Múltipla escolha + cálculo</td><td>Valor numérico de t²/4 − 2t + 12 para t = 12 (24 °C)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q7</b></td><td>Somatório</td><td>Volume e capacidade: m³, dm³ e L (certo: 07)</td><td class="st" style="color:#ff8a80">❌ Errou</td><td>Respondeu 05: deixou de fora 20 L = 0,02 m³ (verdadeira)</td></tr><tr><td><b>Q8</b></td><td>Somatório</td><td>Expressões algébricas: coeficiente e parte literal (11)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr></table></div></div><div class="sec"><h2>Mensal 2 — 15/10/2026</h2><div class="sub">Cap. 13 Equações (distributiva, frações, dízimas) · Cap. 14 Inequações · Cap. 15 Ângulos</div><div class="tabela-wrap"><table><tr><th>Questão</th><th>Formato</th><th>Tema</th><th>Resultado</th><th>O que aconteceu</th></tr><tr><td><b>Q1</b></td><td>Discursiva</td><td>Conjunto solução de 3(x + 7) + 5(x − 10) = 51 (x = 10)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q2</b></td><td>Discursiva</td><td>Equação com decimais 2(1 − 0,4x) + x = 4(0,1x − 0,4) (x = 18)</td><td class="st" style="color:#ff8a80">❌ Errou</td><td>Errou a soma dos decimais (−0,8x + x − 0,4x = −0,2x) e −2 − 1,6 = −3,6</td></tr><tr><td><b>Q3</b></td><td>Múltipla escolha + cálculo</td><td>Equação com fração (pelos cálculos, x + x/5 = 2 → 5/3)</td><td class="st" style="color:#ffb547">⛔ Zerada (letra certa, conta errada)</td><td>Letra certa, mas x/5 virou 5x (6x = 2): cálculo não confere → zerada</td></tr><tr><td><b>Q4</b></td><td>Múltipla escolha</td><td>Frações geratrizes (2/9; 4/11; 77/9)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q5</b></td><td>Múltipla escolha + cálculo</td><td>Ângulos suplementares 4x + 5° e 17x + 7° (x = 8)</td><td class="st" style="color:#ff8a80">❌ Errou</td><td>Igualou as expressões (subtraiu) em vez de somar = 180°</td></tr><tr><td><b>Q6</b></td><td>Cálculo aberto</td><td>Ângulos complementares 3x + 24 e 4x − 18 (x = 12; 60° e 30°)</td><td class="st" style="color:#ff8a80">❌ Errou</td><td>Mesmo erro: igualou em vez de somar = 90°</td></tr><tr><td><b>Q7</b></td><td>Somatório</td><td>Ângulos: suplementares, retos, complementares, consecutivos (certo: 05)</td><td class="st" style="color:#ff8a80">❌ Errou</td><td>Respondeu 13: somou a (08), que era falsa (consecutivos têm o mesmo vértice)</td></tr><tr><td><b>Q8</b></td><td>Somatório</td><td>Equação × inequação e solução de inequação (12)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr></table></div></div><div class="sec"><h2>Mensal 3 — 12/11/2026</h2><div class="sub">Cap. 15 Ângulos · Cap. 16 Razão · Cap. 17 Proporção direta · Cap. 18 Proporção inversa</div><div class="tabela-wrap"><table><tr><th>Questão</th><th>Formato</th><th>Tema</th><th>Resultado</th><th>O que aconteceu</th></tr><tr><td><b>Q1</b></td><td>Múltipla escolha + cálculo</td><td>Paralelas e transversal: 7x − 148° = 139° (x = 41°)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q2</b></td><td>Múltipla escolha + cálculo</td><td>Soma de graus, minutos e segundos (39°27'30'')</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q3</b></td><td>Múltipla escolha + cálculo</td><td>Razão acertos/total (9/10)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q4</b></td><td>Múltipla escolha + cálculo</td><td>Regra de três direta (1,375)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q5</b></td><td>Múltipla escolha + cálculo</td><td>Proporção inversa: 3 pintores em 4 h → 2 pintores; tempo a mais (2 h)</td><td class="st" style="color:#ffb547">⛔ Zerada (letra certa, conta errada)</td><td>Letra certa, mas a conta (3/4 = x/2) não chega em 2 h → zerada</td></tr><tr><td><b>Q6</b></td><td>Múltipla escolha + cálculo</td><td>Velocidade média: 10 km em 30 min (20 km/h)</td><td class="st" style="color:#ff8a80">❌ Errou</td><td>Fez 30 ÷ 10 (tempo ÷ distância, em minutos) e marcou 30 km/h</td></tr><tr><td><b>Q7</b></td><td>Somatório</td><td>Porcentagem e proporção (05)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr><tr><td><b>Q8</b></td><td>Somatório</td><td>Razão (13)</td><td class="st" style="color:#5ef2a0">✅ Acertou</td><td>—</td></tr></table></div></div><div class="sec"><h2>📊 Placar do trimestre</h2><p><b>15</b> questões certas · <b>6</b> erradas · <b>3</b> zeradas com a letra certa (de 24).</p></div><div class="sec"><h2>🎯 Pontos fracos (o que o kit mais treina)</h2>
+<div class="pf"><h3>🔴 1. Cálculo que não confere com a alternativa — prioridade máxima</h3><p>Aconteceu nas <b>3 provas</b> (M1 Q2, M2 Q3, M3 Q5): três questões zeradas mesmo com a letra certa. Ficha “O cálculo que confere” + campo (MOSTRE OS CÁLCULOS) obrigatório no Simulado.</p></div>
+<div class="pf"><h3>🔴 2. Ângulos complementares e suplementares com x</h3><p>Duas questões da mesma prova (M2 Q5 e Q6) com o mesmo erro: igualar as expressões em vez de somar = 90° ou 180°.</p></div>
+<div class="pf"><h3>🔴 3. Unidades: m³ ↔ L e minutos ↔ horas</h3><p>M1 Q7 (20 L = 0,02 m³) e M3 Q6 (velocidade média com 30 min).</p></div>
+<div class="pf"><h3>🔴 4. Equações com decimais e com frações</h3><p>M2 Q2 (soma de decimais com sinais) e M2 Q3 (x + x/5 = 2).</p></div>
+<div class="pf"><h3>🔴 5. Proporção inversa e “tempo a mais”</h3><p>M3 Q5 (menos pintores → mais tempo; a mais = diferença).</p></div>
+<div class="pf rf"><h3>🟠 6. Nomes dos ângulos no somatório</h3><p>M2 Q7 (reto = 90°; consecutivos têm o mesmo vértice).</p></div></div>
+<div class="sec"><h2>🪞 Espelho da professora (formato copiado no Simulado)</h2><table>
+<tr><th>Tipo de questão</th><th>Nas 3 provas</th><th>No Simulado</th></tr>
+<tr><td>Múltipla escolha A/B/C com “(MOSTRE OS CÁLCULOS)”</td><td>15 de 24 (≈ 62%)</td><td>20 de 30 (com campo de cálculo obrigatório)</td></tr>
+<tr><td>Somatório 01/02/04/08 (4 afirmativas)</td><td>6 de 24 (25%)</td><td>7 de 30</td></tr>
+<tr><td>Discursiva / cálculo aberto (conjunto solução, medidas)</td><td>3 de 24 (≈ 13%)</td><td>3 de 30</td></tr>
+<tr><td>Distribuição por prova</td><td>8 questões em cada Mensal</td><td>8 + 9 + 9 por parte + 4 de revisão geral</td></tr>
+<tr><td>Dificuldade</td><td colspan="2">Contas de 7º ano em problemas contextualizados (aplicativo de carona, estufa, pintores, corredor); somatórios de conceito. As provas não usaram V/F nem números romanos, por isso o Simulado também não usa.</td></tr></table></div>
+<div class="rodape">Anexo do kit Resgate Submarino. 🤿</div></div><div class="modal-bg" id="lock"><div class="modal"><div class="big">🔒</div><p><b>Esta etapa ainda está trancada.</b></p><p id="lock-txt"></p><a href="index.html">Voltar ao início</a></div></div><div class="modal-bg" id="modal"><div class="modal"><p id="modal-txt"></p><button class="ok" id="modal-ok">Ok</button><button class="sec" id="modal-cancel" style="display:none">Cancelar</button></div></div>
+<script>
+var KIT='resgate_sub_m7r';
+var TRILHA=[
+ {id:'resumo', chave:KIT+'_resumo_v1', nome:'Resumo de Revisão', arquivo:'resumo.html', emoji:'🗺️'},
+ {id:'simulado', chave:KIT+'_simulado_v1', nome:'Simulado', arquivo:'simulado.html', emoji:'📝'}
+];
+var MEM={};
+function lerJSON(k){ try{ var s=localStorage.getItem(k); return s?JSON.parse(s):(MEM[k]?JSON.parse(MEM[k]):null); }catch(e){ return MEM[k]?JSON.parse(MEM[k]):null; } }
+function gravarJSON(k,v){ var s=JSON.stringify(v); try{ localStorage.setItem(k,s); }catch(e){ MEM[k]=s; } }
+function trilhaLiberada(){ var t=lerJSON(KIT+'_trilha_v1'); return !!(t&&t.liberadoPelosPais); }
+function etapa(id){ return TRILHA.filter(function(t){return t.id===id;})[0]; }
+function etapaConcluida(id){ var d=lerJSON(etapa(id).chave); return !!(d&&d.concluido); }
+function idxEtapa(id){ return TRILHA.map(function(t){return t.id;}).indexOf(id); }
+function podeAbrir(id){ var i=idxEtapa(id); if(i<=0||trilhaLiberada()) return true; return etapaConcluida(TRILHA[i-1].id); }
+function marcarNav(){
+  var links=document.querySelectorAll('#nav a[data-etapa]');
+  for(var i=0;i<links.length;i++){ var id=links[i].getAttribute('data-etapa'); var t=links[i].getAttribute('data-txt');
+    if(!podeAbrir(id)){ links[i].classList.add('lock'); links[i].textContent='🔒 '+t; links[i].title='Ainda trancado'; }
+    else { links[i].classList.remove('lock'); links[i].textContent=t; links[i].title=''; } }
+}
+function textoTrava(id){
+  var d=lerJSON(etapa('resumo').chave)||{}; var r=Math.round(d.rolagemMax||0);
+  return 'Para abrir o Simulado, leia o Resumo de Revisão até o fim e clique em “✅ Li o resumo até o fim”'+(r?' (você já leu '+r+'% da página)':'')+'.';
+}
+function checarTrava(id){
+  if(podeAbrir(id)) return true;
+  document.getElementById('lock-txt').textContent=textoTrava(id);
+  document.getElementById('lock').classList.add('show');
+  var w=document.querySelector('.wrap'); w.style.filter='blur(10px)'; w.style.pointerEvents='none'; w.setAttribute('aria-hidden','true');
+  return false;
+}
+function mostrarModal(txt,confirmar,fn){ document.getElementById('modal-txt').innerHTML=txt; document.getElementById('modal').classList.add('show'); var c=document.getElementById('modal-cancel'); c.style.display=confirmar?'inline-block':'none'; c.onclick=fecharModal; var ok=document.getElementById('modal-ok'); ok.textContent=confirmar?'Sim, apagar':'Ok'; ok.onclick=function(){ fecharModal(); if(fn) fn(); }; }
+function fecharModal(){ document.getElementById('modal').classList.remove('show'); }
+function carimbo(){ var d=new Date(); var el=document.getElementById('salvo'); if(el) el.textContent='💾 Último salvamento: '+d.toLocaleDateString('pt-BR')+' às '+d.toLocaleTimeString('pt-BR'); }
+function baixarJSON(obj,nome){ var blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=nome; document.body.appendChild(a); a.click(); a.remove(); }
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function embaralhar(arr,rnd){ var a=arr.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(rnd()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+var LETRAS='ABCDEFGHJKLMNPQRSTUVWXYZ';
+function gerarCodigo(pref,ac){ var xx=(ac<10?'0':'')+ac; return pref+'-'+xx+'-'+LETRAS[Math.floor(Math.random()*LETRAS.length)]+LETRAS[Math.floor(Math.random()*LETRAS.length)]; }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+function fmt(iso){ if(!iso) return ''; var d=new Date(iso); return d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}); }
+marcarNav();</script>
+</body>
+</html>

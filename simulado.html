@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado · Resgate Submarino · Matemática 7º</title>
+<style>
+:root{--bg:#041a22;--bg2:#072a35;--bg3:#0b3a48;--borda:#12505f;--borda2:#1d6b7d;--amarelo:#ffb547;--verde:#5ef2a0;--laranja:#ff6f61;--ceu:#2ee6d6;--texto:#e4f7f9;--cinza:#93bcc6;--vermelho:#ff5d6c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Verdana,'Segoe UI',Tahoma,sans-serif;background:radial-gradient(1100px 520px at 50% -12%,#0d4a5c,#041a22 62%),var(--bg);color:var(--texto);line-height:1.7;font-size:17px;padding-bottom:60px}
+h1,h2,h3,h4{font-family:'Palatino Linotype','Book Antiqua',Georgia,serif;letter-spacing:.2px}
+.prof{font-family:'Courier New',monospace;letter-spacing:1px}
+header{padding:28px 18px 22px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,.5);background:linear-gradient(180deg,#0e5c6e 0%,#073644 55%,#041a22 100%);border-bottom:3px solid var(--ceu)}
+header .selo{font-size:.76rem;letter-spacing:2px;color:#b6fff8;text-transform:uppercase;font-family:'Courier New',monospace}
+header h1{font-size:1.8rem;margin:8px 0 4px}
+header h1 .s{color:var(--ceu)} header h1 .a{color:var(--amarelo)}
+header p{color:#cdeff3;font-size:.92rem}
+.ondas{height:18px;background:radial-gradient(circle at 10px -4px,transparent 11px,#0a3b49 12px) 0 0/20px 18px repeat-x;opacity:.9}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+.barra-nav{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.barra-nav a{flex:1 1 auto;text-align:center;text-decoration:none;color:var(--texto);background:var(--bg2);border:1px solid var(--borda);border-radius:22px;padding:8px 10px;font-size:.86rem}
+.barra-nav a.on{border-color:var(--ceu);color:var(--ceu);font-weight:bold}
+.barra-nav a.lock{opacity:.5;pointer-events:none;filter:grayscale(.7)}
+.intro{background:var(--bg2);border:1px solid var(--borda);border-radius:16px;padding:16px 18px;margin:14px 0}
+.intro h2{font-size:1.2rem;margin-bottom:8px;color:var(--ceu)}
+.intro ol,.intro ul{margin:8px 0 0 22px}
+.painel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:#06303c;border:1px dashed var(--borda2);border-radius:12px;padding:10px 12px;margin:12px 0;font-size:.86rem;color:var(--cinza)}
+.painel .btns{display:flex;gap:6px;flex-wrap:wrap}
+button{font-family:inherit}
+.mini{background:var(--bg3);border:1px solid var(--borda2);color:var(--texto);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:.84rem}
+.mini:hover{border-color:var(--ceu)}
+.postit{background:#ffe58f;color:#3a2a00;border-radius:4px;padding:12px 14px;box-shadow:3px 4px 10px rgba(0,0,0,.4);transform:rotate(-.7deg);margin:14px 0;font-size:.95rem}
+.postit b{color:#7a4a00}
+.alerta{background:#3a1614;border-left:5px solid var(--laranja);border-radius:0 12px 12px 0;padding:12px 14px;margin:14px 0;font-size:.95rem}
+.alerta b{color:#ffb3a8}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(2,12,16,.88);z-index:60;align-items:center;justify-content:center;padding:16px}
+.modal-bg.show{display:flex}
+.modal{background:var(--bg2);border:2px solid var(--ceu);border-radius:16px;padding:22px;max-width:440px;text-align:center}
+.modal .big{font-size:2.6rem}
+.modal p{margin-bottom:12px}
+.modal a,.modal button.ok{display:inline-block;background:var(--ceu);color:#032a2a;border:none;border-radius:10px;padding:10px 18px;font-weight:bold;text-decoration:none;cursor:pointer}
+.modal button.sec{background:transparent;border:1px solid var(--borda2);color:var(--texto);border-radius:10px;padding:10px 16px;margin-left:8px;cursor:pointer}
+.rodape{text-align:center;color:var(--cinza);font-size:.82rem;margin-top:26px}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid var(--borda);padding:7px 9px;text-align:left;font-size:.88rem;vertical-align:top}
+th{background:#08394a;color:var(--ceu)}
+.trilha-fim{background:var(--bg2);border:2px solid var(--borda2);border-radius:14px;padding:16px;margin:20px 0;text-align:center}
+
+header{background:linear-gradient(180deg,#0b1f3d,#08162c);border-bottom:5px solid #e53935}
+.cabec{background:#f7f9fc;color:#1b2430;border-radius:12px;margin:14px 0;overflow:hidden;border:2px solid #0b1f3d}
+.cabec table td{border:1px solid #9aa7b8;color:#1b2430;font-size:.86rem;padding:6px 9px}
+.cabec .col{font-weight:bold;text-align:center;font-size:1.05rem;color:#0b1f3d;font-family:'Palatino Linotype',Georgia,serif}
+.cabec .imp{padding:9px 12px;font-size:.86rem;background:#fff;border-top:1px solid #9aa7b8}
+.codigo{display:none;position:sticky;top:0;z-index:20;text-align:center;border-radius:0 0 14px 14px;padding:10px;margin:-16px 0 12px;font-weight:bold;background:#e53935;color:#fff}
+.codigo.show{display:block}
+.codigo .cod{font-family:'Courier New',monospace;font-size:1.6rem;letter-spacing:3px}
+.progresso{background:#06303c;border:1px solid var(--borda);border-radius:10px;height:14px;overflow:hidden;margin:8px 0 2px}
+.progresso div{height:100%;width:0;transition:width .3s;background:#e53935}
+#cont{font-size:.85rem;color:var(--cinza)}
+.parte{margin:24px 0 6px;color:var(--ceu);font-size:1.15rem}
+.q{background:var(--bg2);border:1px solid var(--borda);border-radius:14px;padding:14px 16px;margin:14px 0}
+.q .num{font-size:.8rem;color:var(--cinza);margin-top:4px}
+.q h3{font-size:1.02rem;margin:4px 0 10px;font-family:Verdana,'Segoe UI',sans-serif;font-weight:normal;line-height:1.6}
+.tipo{font-size:.7rem;border-radius:20px;padding:2px 9px;font-weight:bold;text-transform:uppercase}
+.tipo.mc{background:#1e4f8a;color:#d7e9ff}.tipo.som{background:#7a5a00;color:#ffe9a6}.tipo.dis{background:#1f6b45;color:#c9f7df}
+.capq{font-size:.72rem;color:var(--cinza);border:1px solid var(--borda2);border-radius:20px;padding:1px 8px}
+.pts{font-size:.74rem;color:#ffd7a8;font-weight:bold}
+.alt{display:block;border:1px solid var(--borda2);border-radius:10px;padding:9px 11px;margin:6px 0;cursor:pointer;background:#052530}
+.alt.sel{border-color:var(--amarelo);background:#2a2a14}
+.alt.certa{background:#0b4a2e;border:2px solid var(--verde)}
+.alt.errada{background:#1c2a30;color:#a9bcc3;border-color:#33505a}
+.alt.marcada{background:#2b3236;color:#c7d3d8;border:2px dashed #8aa1aa}
+.alt .exp{font-size:.86rem;margin-top:5px;color:#b8cdd3}
+.alt.certa .exp{color:#c6fbe0}
+.calc label{display:block;font-size:.8rem;font-weight:bold;color:var(--cinza);margin-top:8px;letter-spacing:.5px}
+.afirm{border-left:3px solid var(--borda2);padding:6px 10px;margin:6px 0;background:#052530;border-radius:0 8px 8px 0}
+.afirm.ok{border-left-color:var(--verde)}.afirm.no{border-left-color:#7a8f96}
+.afirm .exp{font-size:.86rem;color:#b8cdd3;margin-top:4px}
+.soma{margin-top:10px}
+.soma input{width:90px;padding:7px;border-radius:8px;border:1px solid var(--borda2);background:#03161c;color:var(--texto);font-size:1rem}
+.ok-t{color:var(--verde);font-weight:bold}.no-t{color:#c7d3d8}
+textarea{width:100%;min-height:90px;background:#03161c;color:var(--texto);border:1px dashed var(--borda2);border-radius:10px;padding:10px;font-family:inherit;font-size:.98rem}
+.q.dis textarea{min-height:130px}
+.modelo-d{margin-top:10px;background:#063a2c;border:1px solid #2c8a5e;border-radius:10px;padding:10px;font-size:.93rem}
+.seu-calc{margin-top:8px;font-size:.86rem;background:#03161c;border-radius:8px;padding:8px;color:#cfe3e8;white-space:pre-wrap}
+.enviar{display:block;width:100%;margin:18px 0;border:none;border-radius:12px;padding:14px;font-weight:bold;font-size:1.02rem;cursor:pointer;background:#e53935;color:#fff}
+.enviar:disabled{background:#1d3a44!important;color:#7fa3ad!important;cursor:not-allowed}
+.gab{display:none;background:var(--bg2);border:2px dashed #e53935;border-radius:14px;padding:14px;margin:14px 0}
+.gab.show{display:block}
+.gab input{padding:9px;border-radius:8px;border:1px solid var(--borda2);background:#03161c;color:var(--texto);font-size:1rem;width:170px;text-transform:uppercase;margin:8px 6px 0 0}
+.gab button{background:#e53935;color:#fff;border:none;border-radius:8px;padding:9px 14px;font-weight:bold;cursor:pointer}
+.gab .msg{margin-top:8px}
+.fim{background:#063a2c;border:1px solid var(--verde);border-radius:14px;padding:14px;margin:14px 0;text-align:center}
+</style>
+</head>
+<body>
+<header><div class="selo">Resgate Submarino · Matemática 7º ano · Colégio Coração Feliz</div><h1>📝 Simulado — <span class="s">O Grande</span> <span class="a">Resgate</span></h1><p>30 questões no formato da professora · múltipla escolha com cálculos, somatório e discursivas · código SIM</p></header><div class="ondas"></div><div class="wrap"><nav class="barra-nav" id="nav"><a href="index.html">🚢 Navio (início)</a><a href="diagnostico.html">🧭 Mapa do Naufrágio</a><a href="resumo.html">🗺️ Resumo de Revisão</a><a class="on" href="simulado.html" data-etapa="simulado" data-txt="📝 Simulado">📝 Simulado</a><a href="folha_de_problemas.html">✏️ Folha de Problemas</a></nav><div class="codigo" id="codigo"><div>🔑 Seu código de liberação (anote e mostre aos pais)</div><div class="cod" id="cod"></div></div><div class="cabec"><table><tr><td class="col" colspan="3">COLÉGIO CORAÇÃO FELIZ · SIMULADO DA RECUPERAÇÃO — 3º TRIMESTRE</td></tr>
+<tr><td><b>Disciplina:</b> Matemática</td><td><b>Turma:</b> 7º ano</td><td><b>Valor:</b> 10,0</td></tr>
+<tr><td colspan="3"><b>Aluno(a):</b> jovem aprendiz</td></tr></table>
+<div class="imp"><b>Importante:</b> nas questões objetivas com cálculo, a alternativa só vale se a conta estiver desenvolvida, organizada e <b>chegando no resultado marcado</b>. Por isso cada uma tem o campo <b>(MOSTRE OS CÁLCULOS)</b>, que é obrigatório. Os pais conferem as contas no gabarito.</div></div><div class="intro"><h2>🤿 Hora do Grande Resgate!</h2><p>Faça como se fosse a prova de verdade: <b>30 questões</b>, todas obrigatórias, com papel e lápis do lado. Nas de múltipla escolha, escreva os cálculos no campo de cada questão. Depois de enviar, as respostas <b>travam</b> e aparece o código <b>SIM</b> no topo.</p></div>
+<div class="painel"><span id="salvo">💾 Respostas salvas automaticamente neste aparelho.</span><div class="btns"><button class="mini" onclick="exportar()">📥 Exportar progresso</button><button class="mini" onclick="document.getElementById('imp').click()">📤 Importar progresso</button><input type="file" id="imp" accept="application/json" style="display:none" onchange="importar(event)"><button class="mini" onclick="pedirZerar()">🗑️ Zerar tudo</button></div></div>
+<div class="progresso"><div id="barra"></div></div><div id="cont"></div>
+<div id="questoes"></div>
+<button class="enviar" id="btn-enviar" onclick="enviar()" disabled>📨 Enviar (responda todas)</button>
+<div class="gab" id="gab"><b>🔑 Gabarito comentado:</b> digite o código que apareceu no topo (ou o código da família).<br><input id="gab-in" placeholder="SIM-XX-YY"><button onclick="abrirGab()">Ver gabarito</button><div class="msg" id="gab-msg"></div></div>
+<div class="fim" id="fim" style="display:none">✅ Resgate concluído! Agora <b>todos os materiais ficam abertos</b> para revisar até a prova. Faça também a <a href="folha_de_problemas.html" style="color:var(--amarelo)">✏️ Ficha de Mergulho (Folha de Problemas)</a> no papel.</div>
+<div class="rodape">Feito com carinho para o jovem aprendiz. 🤿 Bom resgate!</div>
+</div><div class="modal-bg" id="lock"><div class="modal"><div class="big">🔒</div><p><b>Esta etapa ainda está trancada.</b></p><p id="lock-txt"></p><a href="index.html">Voltar ao início</a></div></div><div class="modal-bg" id="modal"><div class="modal"><p id="modal-txt"></p><button class="ok" id="modal-ok">Ok</button><button class="sec" id="modal-cancel" style="display:none">Cancelar</button></div></div>
+<script>
+var KIT='resgate_sub_m7r';
+var TRILHA=[
+ {id:'resumo', chave:KIT+'_resumo_v1', nome:'Resumo de Revisão', arquivo:'resumo.html', emoji:'🗺️'},
+ {id:'simulado', chave:KIT+'_simulado_v1', nome:'Simulado', arquivo:'simulado.html', emoji:'📝'}
+];
+var MEM={};
+function lerJSON(k){ try{ var s=localStorage.getItem(k); return s?JSON.parse(s):(MEM[k]?JSON.parse(MEM[k]):null); }catch(e){ return MEM[k]?JSON.parse(MEM[k]):null; } }
+function gravarJSON(k,v){ var s=JSON.stringify(v); try{ localStorage.setItem(k,s); }catch(e){ MEM[k]=s; } }
+function trilhaLiberada(){ var t=lerJSON(KIT+'_trilha_v1'); return !!(t&&t.liberadoPelosPais); }
+function etapa(id){ return TRILHA.filter(function(t){return t.id===id;})[0]; }
+function etapaConcluida(id){ var d=lerJSON(etapa(id).chave); return !!(d&&d.concluido); }
+function idxEtapa(id){ return TRILHA.map(function(t){return t.id;}).indexOf(id); }
+function podeAbrir(id){ var i=idxEtapa(id); if(i<=0||trilhaLiberada()) return true; return etapaConcluida(TRILHA[i-1].id); }
+function marcarNav(){
+  var links=document.querySelectorAll('#nav a[data-etapa]');
+  for(var i=0;i<links.length;i++){ var id=links[i].getAttribute('data-etapa'); var t=links[i].getAttribute('data-txt');
+    if(!podeAbrir(id)){ links[i].classList.add('lock'); links[i].textContent='🔒 '+t; links[i].title='Ainda trancado'; }
+    else { links[i].classList.remove('lock'); links[i].textContent=t; links[i].title=''; } }
+}
+function textoTrava(id){
+  var d=lerJSON(etapa('resumo').chave)||{}; var r=Math.round(d.rolagemMax||0);
+  return 'Para abrir o Simulado, leia o Resumo de Revisão até o fim e clique em “✅ Li o resumo até o fim”'+(r?' (você já leu '+r+'% da página)':'')+'.';
+}
+function checarTrava(id){
+  if(podeAbrir(id)) return true;
+  document.getElementById('lock-txt').textContent=textoTrava(id);
+  document.getElementById('lock').classList.add('show');
+  var w=document.querySelector('.wrap'); w.style.filter='blur(10px)'; w.style.pointerEvents='none'; w.setAttribute('aria-hidden','true');
+  return false;
+}
+function mostrarModal(txt,confirmar,fn){ document.getElementById('modal-txt').innerHTML=txt; document.getElementById('modal').classList.add('show'); var c=document.getElementById('modal-cancel'); c.style.display=confirmar?'inline-block':'none'; c.onclick=fecharModal; var ok=document.getElementById('modal-ok'); ok.textContent=confirmar?'Sim, apagar':'Ok'; ok.onclick=function(){ fecharModal(); if(fn) fn(); }; }
+function fecharModal(){ document.getElementById('modal').classList.remove('show'); }
+function carimbo(){ var d=new Date(); var el=document.getElementById('salvo'); if(el) el.textContent='💾 Último salvamento: '+d.toLocaleDateString('pt-BR')+' às '+d.toLocaleTimeString('pt-BR'); }
+function baixarJSON(obj,nome){ var blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=nome; document.body.appendChild(a); a.click(); a.remove(); }
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function embaralhar(arr,rnd){ var a=arr.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(rnd()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+var LETRAS='ABCDEFGHJKLMNPQRSTUVWXYZ';
+function gerarCodigo(pref,ac){ var xx=(ac<10?'0':'')+ac; return pref+'-'+xx+'-'+LETRAS[Math.floor(Math.random()*LETRAS.length)]+LETRAS[Math.floor(Math.random()*LETRAS.length)]; }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+function fmt(iso){ if(!iso) return ''; var d=new Date(iso); return d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}); }
+
+var Q=[{"tipo": "mc", "cap": "Cap. 9 · Volume", "p": "Indique o <b>volume do paralelepípedo</b> de dimensões 5 m, 7 m e 3 m.", "alts": [{"t": "105 m³", "e": "V = a · b · c = 5 · 7 · 3 = 105 m³."}, {"t": "15 m³", "e": "15 é a SOMA 5 + 7 + 3; volume é o PRODUTO."}, {"t": "35 m³", "e": "Faltou multiplicar pela terceira dimensão (3)."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 10 e 12 · Cálculo que confere", "p": "Uma empresa de entregas cobra uma <b>parte fixa de R$ 12,00, somada à distância percorrida multiplicada por 1,75</b>. Qual o valor de uma entrega de <b>24 km</b>?", "alts": [{"t": "R$ 54,00", "e": "1,75 · 24 = 42; 42 + 12 = R$ 54,00 (primeiro a multiplicação)."}, {"t": "R$ 63,00", "e": "Erro de somar 12 + 24 = 36 e depois multiplicar 36 · 1,75. A parte fixa não se multiplica."}, {"t": "R$ 37,75", "e": "Somou tudo (12 + 24 + 1,75) sem multiplicar a distância."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 10 · Redução", "p": "Assinale a alternativa que apresenta corretamente a <b>redução</b> da expressão algébrica: 6x − 4y + 2x − y + 3y", "alts": [{"t": "8x − 2y", "e": "6x + 2x = 8x; −4y − y + 3y = −2y."}, {"t": "8x − 8y", "e": "O +3y foi tratado como −3y."}, {"t": "4x − 2y", "e": "6x + 2x é 8x (soma), não 4x."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 10 · Perímetro", "p": "Um terreno tem a forma de um quadrilátero de lados <b>45k, 38k, 52k e 29k</b>. Qual é o <b>perímetro</b>?", "alts": [{"t": "164k", "e": "45 + 38 + 52 + 29 = 164 → 164k (termos semelhantes: soma os coeficientes)."}, {"t": "164k⁴", "e": "Somando termos semelhantes a parte literal NÃO muda: continua k."}, {"t": "154k", "e": "Erro na soma: 45 + 38 + 52 + 29 = 164."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 10 · Valor numérico", "p": "A altura de uma muda, em cm, é dada pela expressão <b>t²/2 − 3t + 10</b>, em que t é o tempo em semanas. Qual a altura quando <b>t = 6</b>?", "alts": [{"t": "10 cm", "e": "36/2 − 18 + 10 = 18 − 18 + 10 = 10 cm."}, {"t": "46 cm", "e": "Trocou o sinal do −3t: 18 + 18 + 10."}, {"t": "28 cm", "e": "Esqueceu o termo −3t: 18 + 10."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 12 · Equações", "p": "Assinale a alternativa que apresenta uma <b>equação com solução igual a 7</b>.", "alts": [{"t": "4x − 9 = 19", "e": "4 · 7 − 9 = 28 − 9 = 19 ✔"}, {"t": "3x + 5 = 23", "e": "3 · 7 + 5 = 26, não 23 (a solução dessa é x = 6)."}, {"t": "2x − 7 = 9", "e": "2 · 7 − 7 = 7, não 9 (a solução dessa é x = 8)."}], "calc": true, "pts": "0,25"}, {"tipo": "som", "cap": "Cap. 9 · Volume e capacidade", "p": "É correto afirmar que:", "itens": [{"v": 1, "t": "3 m³ = 3 000 L", "ok": true, "e": "1 m³ = 1000 L → 3 · 1000 = 3 000 L."}, {"v": 2, "t": "50 L = 0,5 m³", "ok": false, "e": "50 L = 50 dm³ = 50 ÷ 1000 = 0,05 m³."}, {"v": 4, "t": "750 dm³ = 750 L", "ok": true, "e": "1 dm³ = 1 L."}, {"v": 8, "t": "4 L = 0,004 m³", "ok": true, "e": "4 L = 4 dm³ = 4 ÷ 1000 = 0,004 m³."}], "pts": "0,5"}, {"tipo": "som", "cap": "Cap. 10 · Expressões algébricas", "p": "É correto afirmar que:", "itens": [{"v": 1, "t": "Na expressão algébrica 3xy, o coeficiente é 3 e a parte literal é xy.", "ok": true, "e": "Número = coeficiente; letras = parte literal."}, {"v": 2, "t": "Na expressão algébrica −m, o coeficiente é −1.", "ok": true, "e": "−m = −1 · m."}, {"v": 4, "t": "5a e 5b são termos semelhantes.", "ok": false, "e": "Semelhantes têm a mesma PARTE LITERAL (a ≠ b)."}, {"v": 8, "t": "2x + 3x = 5x².", "ok": false, "e": "2x + 3x = 5x: a parte literal não muda."}], "pts": "0,5"}, {"tipo": "dis", "cap": "Cap. 13 · Distributiva", "p": "Determine o <b>conjunto solução</b> para a seguinte equação: 4(x − 2) + 3(x + 5) = 49", "modelo": "<b>Resposta-modelo (para os pais corrigirem):</b> 4x − 8 + 3x + 15 = 49 → 7x + 7 = 49 → 7x = 42 → x = 6. <b>S = {6}</b>.<br><b>Critérios:</b> (1) distributiva certa (4x − 8 e 3x + 15); (2) reduziu para 7x + 7 = 49; (3) achou x = 6 e escreveu S = {6}.", "pts": "0,5"}, {"tipo": "dis", "cap": "Cap. 13 · Decimais", "p": "O professor escreveu no quadro esta equação: 3(1 − 0,2x) + x = 2(0,3x + 0,5). <b>Qual o valor de x?</b>", "modelo": "<b>Resposta-modelo:</b> 3 − 0,6x + x = 0,6x + 1 → −0,6x + x − 0,6x = 1 − 3 → −0,2x = −2 → <b>x = 10</b> (ou multiplicando por 10: −2x = −20 → x = 10). Conferindo: 3(1 − 2) + 10 = 7 e 2(3 + 0,5) = 7 ✔<br><b>Critérios:</b> (1) distributiva com decimais certa (3 − 0,6x e 0,6x + 1); (2) somou os coeficientes certo (−0,6 + 1 − 0,6 = −0,2); (3) achou x = 10.", "pts": "0,5"}, {"tipo": "mc", "cap": "Cap. 13 · Equação com fração", "p": "Qual é o valor de x na equação <b>x + x/4 = 5</b>?", "alts": [{"t": "4", "e": "× 4: 4x + x = 20 → 5x = 20 → x = 4."}, {"t": "1", "e": "Erro de transformar x/4 em 4x: x + 4x = 5 → x = 1."}, {"t": "5", "e": "5 é o resultado da soma, não o valor de x."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 13 · Fração geratriz", "p": "Descubra as <b>frações geratrizes</b>: I. 0,555…  II. 0,121212…  III. 3,777…", "alts": [{"t": "I. 5/9; II. 4/33; III. 34/9", "e": "5/9; 12/99 = 4/33 (÷3); 3 + 7/9 = 27/9 + 7/9 = 34/9."}, {"t": "I. 5/9; II. 12/9; III. 37/9", "e": "O período 12 tem 2 algarismos → 99 no denominador; e 3,777… = 34/9."}, {"t": "I. 4/33; II. 5/9; III. 34/9", "e": "Trocou I e II de lugar."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 15 · Suplementares", "p": "Sabendo que os ângulos <b>3x + 12°</b> e <b>5x + 8°</b> são <b>suplementares</b>, assinale o valor de x.", "alts": [{"t": "20", "e": "Somando: 8x + 20 = 180 → 8x = 160 → x = 20."}, {"t": "2", "e": "Erro de IGUALAR as expressões (3x + 12 = 5x + 8). Suplementares se somam."}, {"t": "21", "e": "Esqueceu de tirar o 20: 8x = 168."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 15 · Complementares", "p": "Os ângulos <b>x + 10°</b> e <b>3x − 20°</b> são <b>complementares</b>. Quais são as medidas desses ângulos?", "alts": [{"t": "35° e 55°", "e": "4x − 10 = 90 → x = 25 → 25 + 10 = 35° e 3 · 25 − 20 = 55°; 35 + 55 = 90 ✔"}, {"t": "25° e 25°", "e": "Igualou as expressões (x + 10 = 3x − 20 → x = 15). Complementares somam 90°."}, {"t": "25° e 65°", "e": "25 é o valor de x, não a medida do ângulo: substitua!"}], "calc": true, "pts": "0,25"}, {"tipo": "dis", "cap": "Cap. 15 · Complementares", "p": "Calcule as <b>medidas dos ângulos</b> da figura, sabendo que as medidas estão em graus e que os ângulos são <b>complementares</b>: (2x + 18) e (3x − 3).", "modelo": "<b>Resposta-modelo:</b> 2x + 18 + 3x − 3 = 90 → 5x + 15 = 90 → 5x = 75 → x = 15. Ângulos: 2 · 15 + 18 = <b>48°</b> e 3 · 15 − 3 = <b>42°</b>. Conferindo: 48 + 42 = 90 ✔<br><b>Critérios:</b> (1) montou a SOMA = 90 (não igualou); (2) achou x = 15; (3) substituiu e deu as duas medidas.", "pts": "0,5"}, {"tipo": "som", "cap": "Cap. 15 · Ângulos", "p": "É correto afirmar que:", "itens": [{"v": 1, "t": "Ângulos agudos medem menos de 90°.", "ok": true, "e": "Agudo: entre 0° e 90°."}, {"v": 2, "t": "Ângulos suplementares somam 90°.", "ok": false, "e": "Suplementares somam 180°; quem soma 90° são os complementares."}, {"v": 4, "t": "Ângulos opostos pelo vértice têm a mesma medida.", "ok": true, "e": "O.p.v. são congruentes."}, {"v": 8, "t": "Ângulos consecutivos possuem o mesmo vértice e um lado em comum.", "ok": true, "e": "O lado comum sai do vértice."}], "pts": "0,5"}, {"tipo": "som", "cap": "Cap. 14 · Inequações", "p": "É correto afirmar que:", "itens": [{"v": 1, "t": "2x + 1 ≥ 7 é uma inequação.", "ok": true, "e": "Tem sinal de desigualdade (≥)."}, {"v": 2, "t": "x − 4 = 10 é uma inequação.", "ok": false, "e": "Tem sinal de igual: é equação."}, {"v": 4, "t": "Considerando o conjunto dos números racionais, a solução de 3x − 2 < x + 6 é x < 4.", "ok": true, "e": "2x < 8 → x < 4."}, {"v": 8, "t": "A solução de −2x > 8 é x > −4.", "ok": false, "e": "Dividindo por −2 o sinal inverte: x < −4."}], "pts": "0,5"}, {"tipo": "mc", "cap": "Cap. 15 · Paralelas", "p": "Duas retas paralelas r e s são cortadas por uma transversal. Dois ângulos <b>alternos internos</b> medem <b>5x − 40°</b> e <b>3x + 20°</b>. Assinale a medida de x.", "alts": [{"t": "30°", "e": "Alternos são iguais: 5x − 40 = 3x + 20 → 2x = 60 → x = 30°."}, {"t": "25°", "e": "Erro de somar como se fossem colaterais (8x − 20 = 180)."}, {"t": "110°", "e": "110° é a medida do ângulo, não o valor de x."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 15 · Graus, minutos e segundos", "p": "Sabendo que a <b>diferença de dois ângulos é 15°48'25''</b> e que o <b>menor deles é 20°30'50''</b>, assinale a medida do maior ângulo.", "alts": [{"t": "36°19'15''", "e": "Maior = menor + diferença: 35°78'75'' → 75'' = 1'15'' → 35°79'15'' → 79' = 1°19' → 36°19'15''."}, {"t": "35°79'15''", "e": "Faltou trocar 60' por 1°."}, {"t": "4°42'25''", "e": "Subtraiu em vez de somar: o maior = menor + diferença."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 16 · Razão", "p": "Num campeonato, um time acertou <b>18 de 24 chutes</b> ao gol. Qual a razão entre o número de gols e o total de chutes?", "alts": [{"t": "3/4", "e": "18/24, dividindo por 6: 3/4."}, {"t": "4/3", "e": "Invertido: é gols ÷ chutes."}, {"t": "1/4", "e": "1/4 é a razão dos chutes que NÃO viraram gol (6 de 24)."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 17 · Regra de três direta", "p": "Uma atividade vale <b>20 pontos</b> e, quem acertar tudo, ganha <b>3 pontos na média</b>. Um estudante fez <b>14 pontos</b>. Quantos pontos na média ele ganhou?", "alts": [{"t": "2,1", "e": "20 → 3 e 14 → x: 20x = 42 → x = 2,1."}, {"t": "0,9", "e": "0,9 é o que ele DEIXOU de ganhar (3 − 2,1)."}, {"t": "4,2", "e": "Dividiu por 10 em vez de 20: 14 · 3 = 42; 42 ÷ 20 = 2,1."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 18 · Proporção inversa", "p": "<b>Cinco</b> pedreiros levam <b>6 dias</b> para construir um muro. Caso <b>dois</b> pedreiros faltem, <b>quantos dias a mais</b> os outros levarão para construir outro muro igual?", "alts": [{"t": "4 dias", "e": "Inversa: 5 · 6 = 3 · x → 30 = 3x → x = 10 dias; a mais: 10 − 6 = 4 dias."}, {"t": "10 dias", "e": "10 dias é o tempo TOTAL; a pergunta é quanto tempo A MAIS."}, {"t": "3,6 dias", "e": "Fez como se fosse direta (menos pedreiros e menos dias) — não faz sentido."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 16 · Velocidade média", "p": "Uma ciclista percorre, em média, <b>12 quilômetros em 40 minutos</b>. Qual a velocidade média dela, em km/h?", "alts": [{"t": "18 km/h", "e": "40 min = 2/3 h; 12 ÷ 2/3 = 12 · 3/2 = 18 km/h (ou: 6 km a cada 20 min → 18 km em 60 min)."}, {"t": "8 km/h", "e": "Multiplicou 12 · 40 e dividiu por 60: o tempo vai no DENOMINADOR (distância ÷ tempo)."}, {"t": "480 km/h", "e": "Multiplicou distância × tempo em minutos."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 16 · Velocidade média", "p": "Um ônibus percorre <b>150 km em 2 h 30 min</b>. Qual a velocidade média do ônibus?", "alts": [{"t": "60 km/h", "e": "2 h 30 min = 2,5 h; 150 ÷ 2,5 = 60 km/h."}, {"t": "75 km/h", "e": "Ignorou os 30 minutos (150 ÷ 2)."}, {"t": "65 km/h", "e": "Usou 2,3 h no lugar de 2,5 h: 30 min é meia hora (0,5 h)."}], "calc": true, "pts": "0,25"}, {"tipo": "som", "cap": "Cap. 17 · Porcentagem e proporção", "p": "É correto afirmar que:", "itens": [{"v": 1, "t": "25% pode ser representado pela fração 25/100.", "ok": true, "e": "Porcentagem é fração de denominador 100."}, {"v": 2, "t": "20% de 80 = 16.", "ok": true, "e": "20/100 · 80 = 16."}, {"v": 4, "t": "10% de 50% = 5.", "ok": false, "e": "0,10 · 0,50 = 0,05 = 5% (e não 5)."}, {"v": 8, "t": "Proporção é uma igualdade entre razões.", "ok": true, "e": "Definição do livro (a/b = c/d)."}], "pts": "0,5"}, {"tipo": "som", "cap": "Cap. 16 · Razão", "p": "É correto afirmar que:", "itens": [{"v": 1, "t": "Uma razão pode ser indicada na forma fracionária, decimal e percentual.", "ok": true, "e": "Ex.: 3/5 = 0,6 = 60%."}, {"v": 2, "t": "Velocidade média é a razão entre o tempo gasto e a distância percorrida.", "ok": false, "e": "É distância ÷ tempo."}, {"v": 4, "t": "Densidade demográfica é a razão entre o número de habitantes e a área.", "ok": true, "e": "Habitantes ÷ área (hab/km²)."}, {"v": 8, "t": "Escala é a razão entre a medida real e a medida do desenho.", "ok": false, "e": "Escala = medida da representação ÷ medida real."}], "pts": "0,5"}, {"tipo": "mc", "cap": "Cap. 13 · Problema com fração", "p": "A soma de um número com a sua <b>terça parte</b> é 16. Qual é esse número?", "alts": [{"t": "12", "e": "x + x/3 = 16 → × 3: 3x + x = 48 → 4x = 48 → x = 12."}, {"t": "4", "e": "Erro de fazer x + 3x = 16 (a terça parte é x/3)."}, {"t": "48", "e": "48 é o resultado depois de multiplicar por 3, não o valor de x."}], "calc": true, "pts": "0,25"}, {"tipo": "mc", "cap": "Cap. 9 · Volume e capacidade", "p": "Uma piscina de <b>8 m × 4 m × 1,5 m</b> está cheia. Quantos <b>litros</b> de água ela contém?", "alts": [{"t": "48 000 L", "e": "V = 8 · 4 · 1,5 = 48 m³; 48 · 1000 = 48 000 L."}, {"t": "4 800 L", "e": "1 m³ = 1000 L (e não 100 L)."}, {"t": "480 L", "e": "Faltou multiplicar por 1000."}], "calc": true, "pts": "0,25"}, {"tipo": "som", "cap": "Cap. 17 e 18 · Direta e inversa", "p": "É correto afirmar que:", "itens": [{"v": 1, "t": "Velocidade e tempo, no mesmo percurso, são grandezas inversamente proporcionais.", "ok": true, "e": "Mais velocidade → menos tempo."}, {"v": 2, "t": "Na proporção direta, o produto x · y é constante.", "ok": false, "e": "Na direta a RAZÃO x/y é constante; o produto constante é da inversa."}, {"v": 4, "t": "Se 4 torneiras iguais enchem um tanque em 6 h, 8 torneiras iguais enchem o mesmo tanque em 3 h.", "ok": true, "e": "4 · 6 = 8 · x → x = 3 h."}, {"v": 8, "t": "A quantidade de pães comprados e o preço pago são inversamente proporcionais.", "ok": false, "e": "Mais pães → maior preço: direta."}], "pts": "0,5"}, {"tipo": "mc", "cap": "Cap. 10 e 12 · Cálculo que confere", "p": "Um plano de celular custa uma <b>parte fixa de R$ 30,00, somada aos minutos extras multiplicados por 0,50</b>. Quem usou <b>46 minutos extras</b> paga:", "alts": [{"t": "R$ 53,00", "e": "0,50 · 46 = 23; 23 + 30 = R$ 53,00."}, {"t": "R$ 38,00", "e": "Erro de somar 30 + 46 e multiplicar por 0,50."}, {"t": "R$ 76,50", "e": "Somou tudo sem multiplicar os minutos."}], "calc": true, "pts": "0,25"}];
+var PARTES={"0": "🌊 Parte 1 — Volume, expressões algébricas e equações (estilo da Mensal 1)", "8": "🌊 Parte 2 — Equações, ângulos e inequações (estilo da Mensal 2)", "17": "🌊 Parte 3 — Ângulos, razão e proporção (estilo da Mensal 3)", "26": "🌊 Parte 4 — Revisão geral"};
+var ETAPA='simulado', PREF='SIM', NOME_ARQ='simulado_resgate-submarino.json';
+var rnd=mulberry32(2611);
+Q.forEach(function(q){ if(q.alts){ q.alts.forEach(function(a,k){ a.id=k; }); q.ordem=embaralhar(q.alts,rnd); } if(q.tipo==='som'){ q.soma=q.itens.filter(function(x){return x.ok;}).reduce(function(s,x){return s+x.v;},0); } });
+var OBJ=Q.filter(function(q){return q.tipo!=='dis';}).length;
+var CHAVE=KIT+'_'+ETAPA+'_v1';
+var estado=lerJSON(CHAVE)||{resp:{},calc:{},enviado:false};
+if(!estado.calc) estado.calc={};
+function salvar(){ gravarJSON(CHAVE,estado); carimbo(); }
+function respondida(i){ var q=Q[i], r=estado.resp[i]; if(r===undefined||r===null||r==='') return false; if(q.tipo==='dis') return String(r).trim().length>=3; if(q.tipo==='mc'&&q.calc) return String(estado.calc[i]||'').trim().length>=3; return true; }
+function acertou(i){ var q=Q[i], r=estado.resp[i]; if(q.tipo==='som') return parseInt(r,10)===q.soma; if(q.tipo==='dis') return null; return r===0; }
+function render(){
+  var c=document.getElementById('questoes'); var h=''; var G=!!estado.gabarito;
+  Q.forEach(function(q,i){
+    if(PARTES[i]) h+='<h2 class="parte">'+PARTES[i]+'</h2>';
+    var tipoTxt={mc:'Múltipla escolha',som:'Somatório',dis:'Discursiva'}[q.tipo];
+    h+='<div class="q '+q.tipo+'" id="q'+i+'"><span class="tipo '+q.tipo+'">'+tipoTxt+'</span> <span class="capq">'+q.cap+'</span> <span class="pts">('+q.pts+')</span><div class="num">Questão '+(i+1)+' de '+Q.length+'</div><h3>'+q.p+'</h3>';
+    if(q.tipo==='som'){
+      q.itens.forEach(function(it){ h+='<div class="afirm'+(G?(it.ok?' ok':' no'):'')+'">'+(it.v<10?'0':'')+it.v+') '+it.t+(G?'<div class="exp">'+(it.ok?'✅ Verdadeira: ':'❌ Falsa: ')+it.e+'</div>':'')+'</div>'; });
+      var r=estado.resp[i];
+      h+='<div class="soma">Somatório das afirmativas corretas: <input type="number" min="0" max="15" id="som'+i+'" value="'+(r!==undefined?esc(r):'')+'" '+(estado.enviado?'disabled':'')+' oninput="marcar('+i+',this.value)"> '+(G?(acertou(i)?'<span class="ok-t">✅ Correto: '+(q.soma<10?'0':'')+q.soma+'</span>':'<span class="no-t">❌ Você respondeu '+esc(r)+'; o certo é '+(q.soma<10?'0':'')+q.soma+'</span>'):'')+'</div>';
+    } else if(q.tipo==='dis'){
+      h+='<div class="calc"><label>(MOSTRE OS CÁLCULOS)</label></div><textarea id="dis'+i+'" '+(estado.enviado?'disabled':'')+' oninput="marcar('+i+',this.value)" placeholder="Escreva aqui a resolução, passo a passo...">'+esc(estado.resp[i]||'')+'</textarea>';
+      if(G) h+='<div class="modelo-d">'+q.modelo+'</div>';
+    } else {
+      if(q.calc){ h+='<div class="calc"><label for="calc'+i+'">(MOSTRE OS CÁLCULOS) — obrigatório</label><textarea id="calc'+i+'" '+(estado.enviado?'disabled':'')+' oninput="marcarCalc('+i+',this.value)" placeholder="Escreva as contas, uma por linha...">'+esc(estado.calc[i]||'')+'</textarea></div>'; }
+      q.ordem.forEach(function(a,k){ var sel=estado.resp[i]===a.id; var cls='alt'+(sel?' sel':'');
+        if(G){ if(a.id===0) cls+=' certa'; else if(sel) cls+=' marcada'; else cls+=' errada'; }
+        h+='<label class="'+cls+'"><input type="radio" name="q'+i+'" '+(sel?'checked':'')+' '+(estado.enviado?'disabled':'')+' onchange="marcar('+i+','+a.id+')"> <b>'+'ABC'[k]+')</b> '+a.t+(G?'<div class="exp">'+(a.id===0?'✅ Correta: ':(sel?'❌ Você marcou: ':'✖ '))+a.e+'</div>':'')+'</label>'; });
+      if(G&&q.calc) h+='<div class="seu-calc"><b>Cálculos escritos:</b>\n'+esc(estado.calc[i]||'(vazio)')+'\n<b>Pais:</b> a conta chega na letra marcada? Se não chegar, na prova a questão valeria zero.</div>';
+    }
+    h+='</div>';
+  });
+  c.innerHTML=h; atualizarBarra(); if(estado.enviado) mostrarEnviado();
+}
+function marcar(i,v){ if(estado.enviado) return; estado.resp[i]=v; salvar(); if(Q[i].tipo==='mc'){ var labs=document.querySelectorAll('#q'+i+' .alt'); var ord=Q[i].ordem; for(var k=0;k<labs.length;k++) labs[k].classList.toggle('sel', ord[k].id===v); } atualizarBarra(); }
+function marcarCalc(i,v){ if(estado.enviado) return; estado.calc[i]=v; salvar(); atualizarBarra(); }
+function atualizarBarra(){ var n=0; Q.forEach(function(q,i){ if(respondida(i)) n++; }); document.getElementById('barra').style.width=(n/Q.length*100)+'%'; document.getElementById('cont').textContent=n+' de '+Q.length+' respondidas (nas de múltipla escolha, conta só com a letra E os cálculos)'; var b=document.getElementById('btn-enviar'); if(!estado.enviado){ b.disabled=n<Q.length; b.textContent=n<Q.length?'📨 Enviar ('+n+' de '+Q.length+' respondidas — responda todas)':'📨 Enviar respostas (não dá para voltar atrás)'; } }
+function nota(){ var t=0; Q.forEach(function(q,i){ if(acertou(i)===true) t+=parseFloat(q.pts.replace(',','.')); }); return t; }
+function enviar(){ if(estado.enviado) return; var n=0; Q.forEach(function(q,i){ if(respondida(i)) n++; }); if(n<Q.length) return;
+  mostrarModal('Enviar agora? Depois de enviar, as respostas ficam <b>travadas</b> e não dá para mudar.',true,function(){
+    var ac=0; Q.forEach(function(q,i){ if(acertou(i)===true) ac++; });
+    estado.acertos=ac; estado.objetivas=OBJ; estado.notaObjetiva=nota(); estado.codigo=gerarCodigo(PREF,ac); estado.enviado=true; estado.enviadoEm=new Date().toISOString(); estado.concluido=true; estado.concluidoEm=estado.enviadoEm;
+    salvar(); render(); window.scrollTo({top:0,behavior:'smooth'}); marcarNav(); });
+  document.getElementById('modal-ok').textContent='Sim, enviar';
+}
+function mostrarEnviado(){
+  var b=document.getElementById('btn-enviar'); b.disabled=true; b.textContent='✅ Enviado — respostas travadas';
+  document.getElementById('codigo').classList.add('show'); document.getElementById('cod').textContent=estado.codigo;
+  document.getElementById('gab').classList.add('show'); document.getElementById('fim').style.display='block';
+  if(estado.gabarito) document.getElementById('gab-msg').innerHTML='<span style="color:var(--verde)">Gabarito aberto: '+estado.acertos+' acertos de '+OBJ+' objetivas (nota objetiva '+String(estado.notaObjetiva).replace('.',',')+' de 8,5) + 3 discursivas (1,5) para os pais corrigirem com a resposta-modelo.</span>';
+}
+function abrirGab(){ var v=document.getElementById('gab-in').value.trim().toUpperCase(); var m=document.getElementById('gab-msg'); if(v===estado.codigo||v==='PAIS-77'){ estado.gabarito=true; salvar(); render(); } else { m.innerHTML='<span style="color:#ffb3b8">Código incorreto. Digite o código que apareceu no topo.</span>'; } }
+function exportar(){ baixarJSON(estado,NOME_ARQ); }
+function importar(ev){ var f=ev.target.files[0]; if(!f) return; var r=new FileReader(); r.onload=function(){ try{ var novo=JSON.parse(r.result); if(!novo.resp) throw 1; if(!novo.calc) novo.calc={}; estado=novo; salvar(); render(); mostrarModal('✅ Progresso importado!',false);}catch(e){ mostrarModal('❌ Arquivo inválido.',false);} }; r.readAsText(f); }
+function pedirZerar(){ if(estado.enviado){ mostrarModal('Já foi enviado: as respostas ficam travadas (regra da prova). Para refazer do zero, os pais usam “Zerar o kit inteiro” no início.',false); return; } mostrarModal('Apagar as respostas marcadas até agora?',true,function(){ estado={resp:{},calc:{},enviado:false}; salvar(); render(); }); }
+marcarNav();
+if(checarTrava(ETAPA)){ render(); }
+</script>
+</body>
+</html>

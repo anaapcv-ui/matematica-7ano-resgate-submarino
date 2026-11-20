@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resgate Submarino · Matemática 7º · Kit de Recuperação</title>
+<style>
+:root{--bg:#041a22;--bg2:#072a35;--bg3:#0b3a48;--borda:#12505f;--borda2:#1d6b7d;--amarelo:#ffb547;--verde:#5ef2a0;--laranja:#ff6f61;--ceu:#2ee6d6;--texto:#e4f7f9;--cinza:#93bcc6;--vermelho:#ff5d6c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Verdana,'Segoe UI',Tahoma,sans-serif;background:radial-gradient(1100px 520px at 50% -12%,#0d4a5c,#041a22 62%),var(--bg);color:var(--texto);line-height:1.7;font-size:17px;padding-bottom:60px}
+h1,h2,h3,h4{font-family:'Palatino Linotype','Book Antiqua',Georgia,serif;letter-spacing:.2px}
+.prof{font-family:'Courier New',monospace;letter-spacing:1px}
+header{padding:28px 18px 22px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,.5);background:linear-gradient(180deg,#0e5c6e 0%,#073644 55%,#041a22 100%);border-bottom:3px solid var(--ceu)}
+header .selo{font-size:.76rem;letter-spacing:2px;color:#b6fff8;text-transform:uppercase;font-family:'Courier New',monospace}
+header h1{font-size:1.8rem;margin:8px 0 4px}
+header h1 .s{color:var(--ceu)} header h1 .a{color:var(--amarelo)}
+header p{color:#cdeff3;font-size:.92rem}
+.ondas{height:18px;background:radial-gradient(circle at 10px -4px,transparent 11px,#0a3b49 12px) 0 0/20px 18px repeat-x;opacity:.9}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+.barra-nav{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.barra-nav a{flex:1 1 auto;text-align:center;text-decoration:none;color:var(--texto);background:var(--bg2);border:1px solid var(--borda);border-radius:22px;padding:8px 10px;font-size:.86rem}
+.barra-nav a.on{border-color:var(--ceu);color:var(--ceu);font-weight:bold}
+.barra-nav a.lock{opacity:.5;pointer-events:none;filter:grayscale(.7)}
+.intro{background:var(--bg2);border:1px solid var(--borda);border-radius:16px;padding:16px 18px;margin:14px 0}
+.intro h2{font-size:1.2rem;margin-bottom:8px;color:var(--ceu)}
+.intro ol,.intro ul{margin:8px 0 0 22px}
+.painel{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:#06303c;border:1px dashed var(--borda2);border-radius:12px;padding:10px 12px;margin:12px 0;font-size:.86rem;color:var(--cinza)}
+.painel .btns{display:flex;gap:6px;flex-wrap:wrap}
+button{font-family:inherit}
+.mini{background:var(--bg3);border:1px solid var(--borda2);color:var(--texto);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:.84rem}
+.mini:hover{border-color:var(--ceu)}
+.postit{background:#ffe58f;color:#3a2a00;border-radius:4px;padding:12px 14px;box-shadow:3px 4px 10px rgba(0,0,0,.4);transform:rotate(-.7deg);margin:14px 0;font-size:.95rem}
+.postit b{color:#7a4a00}
+.alerta{background:#3a1614;border-left:5px solid var(--laranja);border-radius:0 12px 12px 0;padding:12px 14px;margin:14px 0;font-size:.95rem}
+.alerta b{color:#ffb3a8}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(2,12,16,.88);z-index:60;align-items:center;justify-content:center;padding:16px}
+.modal-bg.show{display:flex}
+.modal{background:var(--bg2);border:2px solid var(--ceu);border-radius:16px;padding:22px;max-width:440px;text-align:center}
+.modal .big{font-size:2.6rem}
+.modal p{margin-bottom:12px}
+.modal a,.modal button.ok{display:inline-block;background:var(--ceu);color:#032a2a;border:none;border-radius:10px;padding:10px 18px;font-weight:bold;text-decoration:none;cursor:pointer}
+.modal button.sec{background:transparent;border:1px solid var(--borda2);color:var(--texto);border-radius:10px;padding:10px 16px;margin-left:8px;cursor:pointer}
+.rodape{text-align:center;color:var(--cinza);font-size:.82rem;margin-top:26px}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid var(--borda);padding:7px 9px;text-align:left;font-size:.88rem;vertical-align:top}
+th{background:#08394a;color:var(--ceu)}
+.trilha-fim{background:var(--bg2);border:2px solid var(--borda2);border-radius:14px;padding:16px;margin:20px 0;text-align:center}
+
+.ordem{text-align:center;font-weight:bold;margin:10px 0;color:#fff}
+.selo-pais{display:none;background:#063a2c;border:1px solid var(--verde);color:#9ff5c8;border-radius:10px;padding:10px 14px;margin:12px 0;text-align:center;font-weight:bold}
+.selo-pais.show{display:block}
+.selo-pais button{margin-left:10px;background:transparent;border:1px solid var(--verde);color:#9ff5c8;border-radius:8px;padding:4px 10px;cursor:pointer}
+.trilha{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:16px 0}
+.card{position:relative;background:var(--bg2);border:1px solid var(--borda);border-radius:16px;padding:16px;text-decoration:none;color:var(--texto);display:block;transition:transform .15s,box-shadow .15s}
+.card .passo{font-size:.72rem;letter-spacing:1px;text-transform:uppercase;color:var(--cinza);font-family:'Courier New',monospace}
+.card .emoji{font-size:2rem;margin:4px 0}
+.card h3{font-size:1.08rem;margin-bottom:6px}
+.card p{font-size:.86rem;color:#c4e3e8}
+.card .estado{margin-top:10px;font-size:.8rem;font-weight:bold;padding:6px 8px;border-radius:8px}
+.card.aberto{border-color:var(--verde)}
+.card.aberto:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(94,242,160,.25)}
+.card.aberto .estado{background:#063a2c;color:var(--verde)}
+.card.novo{animation:brilho 1.6s ease-in-out 3;border-color:var(--ceu)}
+@keyframes brilho{0%,100%{box-shadow:0 0 0 rgba(46,230,214,0)}50%{box-shadow:0 0 22px rgba(46,230,214,.6)}}
+.card.novo .estado{background:#06363a;color:var(--ceu)}
+.card.feito{border-color:var(--verde)}
+.card.feito .estado{background:#063a2c;color:#9ff5c8}
+.card.trancado{opacity:.55;filter:grayscale(.6);pointer-events:none;cursor:not-allowed}
+.card.trancado .estado{background:#16303a;color:var(--cinza)}
+.card .cadeado{position:absolute;top:10px;right:12px;font-size:1.3rem}
+.extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:10px 0 16px}
+.extra{background:#0a2a26;border:1px dashed var(--ceu);border-radius:14px;padding:14px;text-decoration:none;color:var(--texto);display:block}
+.extra h3{font-size:1rem;color:var(--ceu);margin-bottom:4px}
+.extra p{font-size:.85rem;color:#c4e3e8}
+.como,.cai{background:var(--bg2);border:1px solid var(--borda);border-radius:14px;padding:16px;margin:16px 0}
+.como h2{color:var(--verde);font-size:1.1rem;margin-bottom:8px}
+.como ol{margin-left:20px}.como li{margin-bottom:6px}
+.cai{border-left:5px solid var(--amarelo)}
+.cai h2{color:var(--amarelo);font-size:1.05rem;margin-bottom:6px}.cai p{margin-bottom:6px;font-size:.92rem}
+.rel{background:var(--bg2);border:1px dashed var(--verde);border-radius:14px;padding:16px;margin:16px 0}
+.rel h2{color:var(--verde);font-size:1.1rem;margin-bottom:8px}
+.rel input{padding:9px;border-radius:8px;border:1px solid var(--borda2);background:#03161c;color:var(--texto);font-size:1rem;width:170px;text-transform:uppercase}
+.rel button{background:var(--verde);color:#032414;border:none;border-radius:8px;padding:9px 14px;font-weight:bold;margin-left:6px;cursor:pointer}
+.rel .out{margin-top:12px;font-size:.92rem}
+.rel .bloco{background:#052530;border:1px solid var(--borda);border-radius:10px;padding:10px 12px;margin:8px 0}
+.rel .bloco b{color:var(--ceu)}
+.rel .liberar{margin:10px 6px 0 0}
+.rel .perigo{background:#4a1418;color:#ffc9cc;border:1px solid var(--vermelho)}
+</style>
+</head>
+<body>
+<header><div class="selo">Kit de Recuperação · Colégio Coração Feliz · Matemática · 7º ano · 3º trimestre</div><h1>🤿 <span class="s">Resgate</span> <span class="a">Submarino</span> 🐠</h1><p>Revisão das Mensais 1, 2 e 3 (10/09, 15/10 e 12/11) · Cap. 9 a 18 do Callis Matemática 7</p></header><div class="ondas"></div><div class="wrap"><div class="intro"><h2>🚢 Bem-vindo ao navio de resgate, jovem aprendiz!</h2><p>Nas três provas do trimestre, alguns pontos <b>afundaram</b>. Este kit é a sua missão de mergulho: primeiro você descobre <b>onde</b> eles afundaram (Mapa do Naufrágio), depois resgata cada tesouro no <b>Resumo de Revisão</b> e, por fim, encara <b>O Grande Resgate</b> — um simulado no formato exato da professora.</p>
+<div class="ordem">Trilha: 🗺️ Resumo de Revisão → 📝 Simulado</div>
+<p style="text-align:center;font-size:.9rem;color:var(--cinza)">Os materiais abrem <b>um por vez, na ordem</b>. Conclua um para destravar o próximo.</p></div>
+<div class="selo-pais" id="selo-pais">🔓 Trilha liberada pelos pais <button onclick="trancar()">Trancar de novo</button></div>
+<div class="trilha" id="trilha"></div>
+<h2 style="font-size:1.05rem;color:var(--ceu);margin-top:6px">🧰 Sempre abertos</h2>
+<div class="extras">
+ <a class="extra" href="diagnostico.html"><h3>🧭 Mapa do Naufrágio — Diagnóstico</h3><p>As 24 questões das 3 provas, uma por uma: o que acertou, o que errou e o que foi zerado. Anexo para os pais.</p></a>
+ <a class="extra" href="folha_de_problemas.html"><h3>✏️ Ficha de Mergulho — Folha de Problemas</h3><p>5 problemas no estilo da professora, com espaço para <b>mostrar os cálculos</b>. Dá para imprimir. O resultado só aparece com os 5 marcados (sem comentários: só certo ou errado).</p></a>
+</div>
+<div class="como"><h2>📌 Como usar este kit</h2><ol>
+ <li><b>Mapa do Naufrágio</b> (pais e criança juntos): vejam quais questões caíram e onde os pontos se perderam.</li>
+ <li><b>Resumo de Revisão</b> (Baú dos Tesouros): uma ficha por tema, com os pontos fracos primeiro. Faça os testes relâmpago, marque “Estudei” e escreva suas anotações. Ler até o fim e clicar em “Li o resumo até o fim” destrava o Simulado.</li>
+ <li><b>Simulado</b> (O Grande Resgate): 30 questões no formato da prova, com os cálculos escritos. Valendo!</li>
+ <li><b>Ficha de Mergulho</b>: pode ser feita a qualquer momento, no papel. Depois do Simulado, <b>tudo fica aberto</b> para revisar até a recuperação.</li></ol>
+ <p style="margin-top:8px;font-size:.88rem;color:var(--cinza)">O progresso fica salvo automaticamente no navegador deste aparelho. Dá para exportar/importar em cada material.</p></div>
+<div class="cai"><h2>🧭 O que cai na recuperação (o que caiu nas 3 provas)</h2>
+ <p><b>Mensal 1 — Cap. 9, 10 e 12:</b> volume do paralelepípedo; m³, dm³ e litros; expressões algébricas (coeficiente, parte literal, redução, perímetro, valor numérico); equações do 1º grau; problemas com parte fixa + parte variável.</p>
+ <p><b>Mensal 2 — Cap. 13, 14 e 15:</b> equações com distributiva, com decimais e com frações; fração geratriz; inequações; ângulos complementares e suplementares (com x); classificação, consecutivos e opostos pelo vértice.</p>
+ <p><b>Mensal 3 — Cap. 15 a 18:</b> paralelas cortadas por transversal; operações com graus, minutos e segundos; razão e velocidade média; regra de três direta; porcentagem; proporção inversa.</p></div>
+<div class="postit">📌 <b>Dica para os pais:</b> ao enviar o Simulado aparece o código <b>SIM</b>: peça que a criança anote e digite aqui embaixo para ver o relatório (e abrir o gabarito comentado). O código <b>PAIS-77</b> mostra tudo e também <b>libera a trilha inteira</b>. No gabarito, confiram se os <b>cálculos escritos chegam na letra marcada</b> — foi isso que zerou 3 questões no trimestre. O progresso é do navegador de cada aparelho: se o Resumo foi feito no tablet e o Simulado vai ser no computador, use 📥 Exportar / 📤 Importar — ou libere a trilha com PAIS-77.</div>
+<div class="rel"><h2>📊 Relatório para os pais</h2><p>Digite o código <b>SIM-…</b> (do Simulado) ou o código fixo da família <b>PAIS-77</b> (mostra tudo e permite liberar a trilha).</p>
+ <div style="margin-top:8px"><input id="cod-in" placeholder="PAIS-77"><button onclick="verRelatorio()">🔓 Ver relatório</button></div><div class="out" id="rel-out"></div></div>
+<div class="rodape">Feito com carinho para o jovem aprendiz. 🤿🐠 Bom resgate!</div>
+</div><div class="modal-bg" id="lock"><div class="modal"><div class="big">🔒</div><p><b>Esta etapa ainda está trancada.</b></p><p id="lock-txt"></p><a href="index.html">Voltar ao início</a></div></div><div class="modal-bg" id="modal"><div class="modal"><p id="modal-txt"></p><button class="ok" id="modal-ok">Ok</button><button class="sec" id="modal-cancel" style="display:none">Cancelar</button></div></div>
+<script>
+var KIT='resgate_sub_m7r';
+var TRILHA=[
+ {id:'resumo', chave:KIT+'_resumo_v1', nome:'Resumo de Revisão', arquivo:'resumo.html', emoji:'🗺️'},
+ {id:'simulado', chave:KIT+'_simulado_v1', nome:'Simulado', arquivo:'simulado.html', emoji:'📝'}
+];
+var MEM={};
+function lerJSON(k){ try{ var s=localStorage.getItem(k); return s?JSON.parse(s):(MEM[k]?JSON.parse(MEM[k]):null); }catch(e){ return MEM[k]?JSON.parse(MEM[k]):null; } }
+function gravarJSON(k,v){ var s=JSON.stringify(v); try{ localStorage.setItem(k,s); }catch(e){ MEM[k]=s; } }
+function trilhaLiberada(){ var t=lerJSON(KIT+'_trilha_v1'); return !!(t&&t.liberadoPelosPais); }
+function etapa(id){ return TRILHA.filter(function(t){return t.id===id;})[0]; }
+function etapaConcluida(id){ var d=lerJSON(etapa(id).chave); return !!(d&&d.concluido); }
+function idxEtapa(id){ return TRILHA.map(function(t){return t.id;}).indexOf(id); }
+function podeAbrir(id){ var i=idxEtapa(id); if(i<=0||trilhaLiberada()) return true; return etapaConcluida(TRILHA[i-1].id); }
+function marcarNav(){
+  var links=document.querySelectorAll('#nav a[data-etapa]');
+  for(var i=0;i<links.length;i++){ var id=links[i].getAttribute('data-etapa'); var t=links[i].getAttribute('data-txt');
+    if(!podeAbrir(id)){ links[i].classList.add('lock'); links[i].textContent='🔒 '+t; links[i].title='Ainda trancado'; }
+    else { links[i].classList.remove('lock'); links[i].textContent=t; links[i].title=''; } }
+}
+function textoTrava(id){
+  var d=lerJSON(etapa('resumo').chave)||{}; var r=Math.round(d.rolagemMax||0);
+  return 'Para abrir o Simulado, leia o Resumo de Revisão até o fim e clique em “✅ Li o resumo até o fim”'+(r?' (você já leu '+r+'% da página)':'')+'.';
+}
+function checarTrava(id){
+  if(podeAbrir(id)) return true;
+  document.getElementById('lock-txt').textContent=textoTrava(id);
+  document.getElementById('lock').classList.add('show');
+  var w=document.querySelector('.wrap'); w.style.filter='blur(10px)'; w.style.pointerEvents='none'; w.setAttribute('aria-hidden','true');
+  return false;
+}
+function mostrarModal(txt,confirmar,fn){ document.getElementById('modal-txt').innerHTML=txt; document.getElementById('modal').classList.add('show'); var c=document.getElementById('modal-cancel'); c.style.display=confirmar?'inline-block':'none'; c.onclick=fecharModal; var ok=document.getElementById('modal-ok'); ok.textContent=confirmar?'Sim, apagar':'Ok'; ok.onclick=function(){ fecharModal(); if(fn) fn(); }; }
+function fecharModal(){ document.getElementById('modal').classList.remove('show'); }
+function carimbo(){ var d=new Date(); var el=document.getElementById('salvo'); if(el) el.textContent='💾 Último salvamento: '+d.toLocaleDateString('pt-BR')+' às '+d.toLocaleTimeString('pt-BR'); }
+function baixarJSON(obj,nome){ var blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=nome; document.body.appendChild(a); a.click(); a.remove(); }
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function embaralhar(arr,rnd){ var a=arr.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(rnd()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+var LETRAS='ABCDEFGHJKLMNPQRSTUVWXYZ';
+function gerarCodigo(pref,ac){ var xx=(ac<10?'0':'')+ac; return pref+'-'+xx+'-'+LETRAS[Math.floor(Math.random()*LETRAS.length)]+LETRAS[Math.floor(Math.random()*LETRAS.length)]; }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+function fmt(iso){ if(!iso) return ''; var d=new Date(iso); return d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}); }
+
+var NFICHAS=12;
+var DESC={
+ resumo:{arq:'resumo.html',d:'Baú dos Tesouros: 12 fichas por tema (pontos fracos primeiro), testes relâmpago, treino de somatório, anotações e pegadinhas.'},
+ simulado:{arq:'simulado.html',d:'O Grande Resgate: 30 questões no formato da professora (múltipla escolha com cálculos, somatório e discursivas). Código SIM e gabarito comentado.'}
+};
+function dados(id){ return lerJSON(etapa(id).chave); }
+function faltaTexto(idx){ var d=dados('resumo')||{}; var r=Math.round(d.rolagemMax||0); return 'Destrava quando você ler o Resumo de Revisão até o fim e clicar em “Li o resumo até o fim”'+(r?' (rolagem: '+r+'%)':'')+'.'; }
+function renderTrilha(){
+  var h='';
+  TRILHA.forEach(function(t,idx){ var feito=etapaConcluida(t.id), aberto=podeAbrir(t.id); var cls='card', estado='', cad='';
+    if(feito){ cls+=' feito'; estado='✅ Concluído · '+fmt(dados(t.id).concluidoEm); }
+    else if(aberto){ var novo=(idx>0 && etapaConcluida(TRILHA[idx-1].id) && !trilhaLiberada()); cls+=novo?' novo':' aberto'; estado=novo?'✨ Novo destravado — pode começar!':(idx===0?'▶️ Comece por aqui':'▶️ Aberto'); }
+    else { cls+=' trancado'; cad='<span class="cadeado">🔒</span>'; estado='🔒 '+faltaTexto(idx); }
+    h+='<a class="'+cls+'" href="'+(aberto?DESC[t.id].arq:'#')+'"'+(aberto?'':' tabindex="-1" aria-disabled="true" onclick="return false"')+'>'+cad+'<div class="passo">Passo '+(idx+1)+'</div><div class="emoji">'+t.emoji+'</div><h3>'+t.nome+'</h3><p>'+DESC[t.id].d+'</p><div class="estado">'+estado+'</div></a>'; });
+  document.getElementById('trilha').innerHTML=h;
+  document.getElementById('selo-pais').classList.toggle('show',trilhaLiberada());
+}
+function relResumo(){ var e=dados('resumo'); if(!e) return 'Ainda não há registro do Resumo.'; var est=e.estudei?Object.keys(e.estudei).filter(function(k){return e.estudei[k];}).length:0; var t=e.teste||{}; var nt=Object.keys(t).length, ac=Object.keys(t).filter(function(k){return t[k]===0;}).length; var notas=e.notas?Object.keys(e.notas).filter(function(k){return (e.notas[k]||'').trim();}).length:0; var s=e.somTreino||{};
+  return '<b>Fichas marcadas como estudadas:</b> '+est+' de '+NFICHAS+'.<br><b>Testes relâmpago:</b> '+ac+' certos de primeira, de '+nt+' respondidos (24 no total).<br><b>Treino de somatório:</b> '+(s.ok?'acertou ('+s.tentativas+' tentativa(s))':(s.tentativas?'ainda não acertou ('+s.tentativas+' tentativa(s))':'não feito'))+'.<br><b>Anotações escritas:</b> '+notas+' de 3 seções.<br><b>Rolagem máxima:</b> '+Math.round(e.rolagemMax||0)+'%. '+(e.concluido?'Lido até o fim em '+fmt(e.concluidoEm)+'.':'Ainda não confirmou a leitura até o fim.'); }
+function relSim(){ var e=dados('simulado'); if(!e) return 'Ainda não há registro do Simulado.'; if(!e.enviado) return 'Simulado iniciado ('+Object.keys(e.resp||{}).length+' de 30 com resposta), ainda não enviado.'; return '<b>Enviado</b> em '+fmt(e.enviadoEm)+'. Acertos: <b>'+e.acertos+' de '+(e.objetivas||27)+'</b> objetivas (nota objetiva '+String(e.notaObjetiva).replace('.',',')+' de 8,5) + 3 discursivas (1,5) para os pais corrigirem com a resposta-modelo. Código: '+e.codigo+'.<br>⚠️ Confiram no gabarito se os cálculos escritos chegam na letra marcada.'; }
+function relFolha(){ var e=lerJSON(KIT+'_folha_v1'); if(!e) return 'Ainda não foi feita neste aparelho (pode ter sido feita no papel).'; if(!e.revelado) return 'Marcações em andamento ('+Object.keys(e.resp||{}).length+' de 5).'; return 'Resultado: <b>'+e.acertos+' de 5</b> ('+fmt(e.reveladoEm)+'). Peça para ver os cálculos!'; }
+function relTrilha(){ var h='<ul style="margin-left:18px">'; TRILHA.forEach(function(t){ var d=dados(t.id); h+='<li>'+t.emoji+' '+t.nome+': '+((d&&d.concluido)?'<span style="color:#9ff5c8">concluído em '+fmt(d.concluidoEm)+'</span>':'<span style="color:#ffb3b8">não concluído</span>')+'</li>'; }); h+='</ul>';
+  var tr=lerJSON(KIT+'_trilha_v1'); if(tr&&tr.liberadoPelosPais) h+='<p>🔓 Trilha liberada pelos pais em '+fmt(tr.liberadoEm)+'.</p>'; else if(tr&&tr.liberadoEm) h+='<p>A trilha foi liberada pelos pais em '+fmt(tr.liberadoEm)+' e trancada de novo em '+fmt(tr.trancadoEm)+'.</p>'; return h; }
+function verRelatorio(){
+  var v=document.getElementById('cod-in').value.trim().toUpperCase(); var out=document.getElementById('rel-out');
+  var s=dados('simulado')||{}; var tudo=(v==='PAIS-77'), okS=(s.codigo&&v===s.codigo);
+  if(!tudo&&!okS){ out.innerHTML='<span style="color:#ffb3b8">Código não reconhecido.</span>'; return; }
+  var h='<div class="bloco"><b>🗺️ Resumo de Revisão</b><br>'+relResumo()+'</div><div class="bloco"><b>📝 Simulado</b><br>'+relSim()+'</div>';
+  if(tudo){ h+='<div class="bloco"><b>✏️ Ficha de Mergulho (Folha de Problemas)</b><br>'+relFolha()+'</div><div class="bloco"><b>🛤️ Trilha</b>'+relTrilha()+'</div>';
+    h+=trilhaLiberada()?'<button class="liberar" onclick="trancar()">🔒 Trancar a trilha de novo</button>':'<button class="liberar" onclick="liberar()">🔓 Liberar todos os materiais</button>';
+    h+='<button class="perigo" onclick="pedirZerarKit()">🗑️ Zerar o kit inteiro</button>'; }
+  else h+='<div class="bloco"><b>🛤️ Trilha</b>'+relTrilha()+'</div>';
+  out.innerHTML=h;
+}
+function liberar(){ var t=lerJSON(KIT+'_trilha_v1')||{}; t.liberadoPelosPais=true; t.liberadoEm=new Date().toISOString(); gravarJSON(KIT+'_trilha_v1',t); renderTrilha(); verRelatorio(); }
+function trancar(){ var t=lerJSON(KIT+'_trilha_v1')||{}; t.liberadoPelosPais=false; t.trancadoEm=new Date().toISOString(); gravarJSON(KIT+'_trilha_v1',t); renderTrilha(); if(document.getElementById('rel-out').innerHTML) verRelatorio(); }
+function pedirZerarKit(){ mostrarModal('Apagar TODO o progresso deste kit (resumo, simulado, folha de problemas e trilha)? A criança volta ao começo, só com o Resumo aberto.',true,function(){ TRILHA.forEach(function(t){ try{ localStorage.removeItem(t.chave); }catch(e){} delete MEM[t.chave]; }); [KIT+'_trilha_v1',KIT+'_folha_v1'].forEach(function(k){ try{ localStorage.removeItem(k); }catch(e){} delete MEM[k]; }); renderTrilha(); document.getElementById('rel-out').innerHTML='<span style="color:#9ff5c8">Kit zerado.</span>'; }); }
+renderTrilha();
+window.addEventListener('pageshow',renderTrilha);
+</script>
+</body>
+</html>
